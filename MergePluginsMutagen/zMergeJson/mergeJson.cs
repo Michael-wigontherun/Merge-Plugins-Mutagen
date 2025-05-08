@@ -1,13 +1,8 @@
-﻿using Mutagen.Bethesda.Skyrim;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Mutagen.Bethesda.Plugins;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace MergePluginsMutagen.zMergeJson
 {
@@ -50,22 +45,22 @@ namespace MergePluginsMutagen.zMergeJson
         [JsonInclude]
         public List<Plugins> plugins = new();
 
-        public mergeJson(string filename, List<string> loadOrder, string dateBuilt, List<string> modNameList)
+        public mergeJson(string filename, List<string> loadOrder, string dateBuilt, List<ModKey> modKeys)
         {
             this.name = Path.GetFileNameWithoutExtension(filename);
             this.filename = filename;
             this.loadOrder = loadOrder;
             this.dateBuilt = dateBuilt;
-            foreach (var plugin in modNameList)
+            foreach (var plugin in modKeys)
             {
                 using (MD5 md5 = MD5.Create())
                 {
-                    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(Path.Combine(Program.Settings.pDataFolder, plugin));
+                    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(Path.Combine(Program.Settings.pDataFolder, plugin.FileName));
                     byte[] hashBytes = md5.ComputeHash(inputBytes);
 
                     plugins.Add(new Plugins()
                     {
-                        filename = plugin,
+                        filename = plugin.FileName,
                         hash = Convert.ToHexString(hashBytes),
                         dataFolder = Program.Settings.pDataFolder
                     });

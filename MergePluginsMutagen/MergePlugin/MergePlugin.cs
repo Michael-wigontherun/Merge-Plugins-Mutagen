@@ -66,16 +66,12 @@ namespace MergePluginsMutagen.MergePluginClass
             var mapJSON = new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys);
             mapJSON.Output(Path.Combine(baseJsonOutputPath, MergeMod.ModKey.FileName + ".json"));
 
-            List<string> modNameList = new();
-            foreach(var key in MergeModKeys)
-            {
-                modNameList.Add(key.FileName);
-            }
-            new mergeJson(MergeMod.ModKey.FileName, LoadOrder, File.GetLastWriteTime(modOutputPath).ToLongTimeString(), modNameList)
+            new mergeJson(MergeMod.ModKey.FileName, LoadOrder, File.GetLastWriteTime(modOutputPath).ToLongTimeString(), MergeModKeys)
                 .Output(Path.Combine(baseJsonOutputPath, "merge.json"));
 
             new MapJSON(MergeMap, MergeModKeys)
                 .Outout(Path.Combine(baseJsonOutputPath, "map.json"));
+
             new fidCache(MergeMap, MergeModKeys)
                 .Output(Path.Combine(baseJsonOutputPath, "fidCache.json"));
         }
