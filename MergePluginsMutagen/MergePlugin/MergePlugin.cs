@@ -1,4 +1,5 @@
 ﻿using MergePluginsMutagen;
+using MergePluginsMutagen.zMergeJson;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments.DI;
 using Mutagen.Bethesda.Plugins;
@@ -53,16 +54,30 @@ namespace MergePluginsMutagen.MergePluginClass
             {
                 rec.IsCompressed = false;
             }
-
+            string modOutputPath = Path.Combine(Settings.pOutputFolder, MergeMod.ModKey.FileName);
             Directory.CreateDirectory(Settings.pOutputFolder);
             MergeMod.BeginWrite
-                .ToPath(Path.Combine(Settings.pOutputFolder, MergeMod.ModKey.FileName))
+                .ToPath(modOutputPath)
                 .WithDefaultLoadOrder()
                 .Write();
 
-            new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys)
-                .Output(Path.Combine(Settings.pOutputFolder, "merge - " + Path.GetFileNameWithoutExtension(MergeMod.ModKey.FileName), MergeMod.ModKey.FileName + ".json"));
+            string baseJsonOutputPath = Path.Combine(Settings.pOutputFolder, "merge - " + Path.GetFileNameWithoutExtension(MergeMod.ModKey.FileName));
 
+            var mapJSON = new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys);
+            mapJSON.Output(Path.Combine(baseJsonOutputPath, MergeMod.ModKey.FileName + ".json"));
+
+            List<string> modNameList = new();
+            foreach(var key in MergeModKeys)
+            {
+                modNameList.Add(key.FileName);
+            }
+            new mergeJson(MergeMod.ModKey.FileName, LoadOrder, File.GetLastWriteTime(modOutputPath).ToLongTimeString(), modNameList)
+                .Output(Path.Combine(baseJsonOutputPath, "merge.json"));
+
+            new MapJSON(MergeMap, MergeModKeys)
+                .Outout(Path.Combine(baseJsonOutputPath, "map.json"));
+            new fidCache(MergeMap, MergeModKeys)
+                .Output(Path.Combine(baseJsonOutputPath, "fidCache.json"));
         }
 
     }

@@ -10,12 +10,18 @@ namespace MergePluginsMutagen.MergePluginClass
 {
     public partial class MergePlugin : IMergeInformationInterface
     {
+        private List<string> LoadOrder = new List<string>();
         private void AddNested()
         {
             using var env = GameEnvironment.Typical.Builder<ISkyrimMod, ISkyrimModGetter>(GameRelease.SkyrimSE)
                 .TransformLoadOrderListings(x => x.Where(x => BuildOnlyLoadTheseList().Contains(x.ModKey)))
                 .WithTargetDataFolder(Settings.pDataFolder)
                 .Build();
+
+            foreach (var plugin in env.LoadOrder.Items)
+            {
+                LoadOrder.Add(plugin.ModKey.FileName);
+            }
 
             foreach (ModKey modKey in MergeModKeys)
             {

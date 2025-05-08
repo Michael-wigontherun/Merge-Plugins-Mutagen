@@ -1,8 +1,6 @@
 ﻿using Mutagen.Bethesda.Plugins;
-using Mutagen.Bethesda.Skyrim;
 using MergePluginsMutagen.MergePluginClass;
-using MergePluginsMutagen.MergeData.MergeDataClass;
-using System.Collections.Generic;
+using MergePluginsMutagen.MergeData;
 
 namespace MergePluginsMutagen
 {

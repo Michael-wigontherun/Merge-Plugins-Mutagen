@@ -6,7 +6,7 @@ using System.Drawing;
 //https://github.com/Jampi0n/Skyrim-NifPatcher
 //https://github.com/Jampi0n/Skyrim-NifPatcher/blob/main/NifPatcher/NifWrapper.cs
 //I changed the namespace and that was it
-namespace MergePluginsMutagen.MergeData.MergeDataClass
+namespace MergePluginsMutagen.MergeData
 {
     public enum TextureId
     {

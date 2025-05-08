@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MergePluginsMutagen.MergeData.MergeDataClass
+namespace MergePluginsMutagen.MergeData
 {
     public partial class MergeDataFiles : IMergeInformationInterface
     {
