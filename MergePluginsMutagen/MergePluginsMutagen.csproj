@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <None Update="MergePluginsMutagen.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="TemsPatchesMerge.esp.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

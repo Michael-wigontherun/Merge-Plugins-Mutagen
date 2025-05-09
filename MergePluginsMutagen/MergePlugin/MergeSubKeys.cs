@@ -4,6 +4,7 @@ using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Skyrim;
+using nifly;
 using Noggog;
 
 namespace MergePluginsMutagen.MergePluginClass
@@ -34,6 +35,13 @@ namespace MergePluginsMutagen.MergePluginClass
                     {
                         foreach (var cell in subBlock.Cells)
                         {
+                            foreach(INavigationMeshGetter rec in cell.NavigationMeshes)
+                            {
+                                var context = env.LinkCache.ResolveContext<INavigationMesh, INavigationMeshGetter>(rec.FormKey);
+
+                                context.GetOrAddAsOverride(MergeMod);
+                            }
+
                             foreach (var rec in cell.Persistent)
                             {
                                 var context = env.LinkCache.ResolveContext<IPlaced, IPlacedGetter>(rec.FormKey);
@@ -75,6 +83,13 @@ namespace MergePluginsMutagen.MergePluginClass
                         {
                             foreach(var cell in subBlock.Items)
                             {
+                                foreach (INavigationMeshGetter rec in cell.NavigationMeshes)
+                                {
+                                    var context = env.LinkCache.ResolveContext<INavigationMesh, INavigationMeshGetter>(rec.FormKey);
+
+                                    context.GetOrAddAsOverride(MergeMod);
+                                }
+
                                 foreach (var rec in cell.Persistent)
                                 {
                                     var context = env.LinkCache.ResolveContext<IPlaced, IPlacedGetter>(rec.FormKey);

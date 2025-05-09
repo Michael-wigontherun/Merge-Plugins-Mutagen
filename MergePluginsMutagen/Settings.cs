@@ -42,6 +42,9 @@ namespace MergePluginsMutagen
             IConfigurationSection mo2 = config.GetSection("MO2");
             mSeperateFolders = bool.Parse(mo2["mSeperateFolders"]!);
             mModsPath = RemoveExtraSlash(mo2["mModsPath"]!);
+
+            IConfigurationSection Advanced = config.GetSection("Advanced");
+            aDisableNavigationMeshInfoMapsCheck = bool.Parse(Advanced["aDisableNavigationMeshInfoMapsCheck"]!);
         }
 
         //[paths]
@@ -56,6 +59,9 @@ namespace MergePluginsMutagen
         //[MO2]
         public bool mSeperateFolders = false;
         public string mModsPath = "";
+
+        //[Advanced]
+        public bool aDisableNavigationMeshInfoMapsCheck = false;
 
     }
 }
