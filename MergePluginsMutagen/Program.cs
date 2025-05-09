@@ -13,11 +13,6 @@ namespace MergePluginsMutagen
 
         internal static void Main(string[] args)
         {
-            args = new string[]
-            {
-                "C:\\Modding\\SkyrimSE\\_Notes\\Merges\\TemsPatchesMerge.esp.txt",
-                "C:\\Modding\\SkyrimSE\\_Notes\\Merges\\_MergePluginsMutagen.ini"
-            };
             try
             {
                 if (args.Length >= 2)
