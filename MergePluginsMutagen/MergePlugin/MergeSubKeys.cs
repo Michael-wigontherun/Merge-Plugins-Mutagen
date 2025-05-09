@@ -3,32 +3,42 @@ using MergePluginsMutagen;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments;
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Assets;
 using Mutagen.Bethesda.Skyrim;
 using nifly;
 using Noggog;
+using System.Linq;
 
 namespace MergePluginsMutagen.MergePluginClass
 {
-    public partial class MergePlugin : IMergeInformationInterface
+    public partial class MergePlugin : IMergeInformation
     {
         private List<string> LoadOrder = new List<string>();
         private void AddNested()
         {
+            var loadOnlyThese = BuildOnlyLoadTheseList();
             using var env = GameEnvironment.Typical.Builder<ISkyrimMod, ISkyrimModGetter>(GameRelease.SkyrimSE)
-                .TransformLoadOrderListings(x => x.Where(x => BuildOnlyLoadTheseList().Contains(x.ModKey)))
+                .TransformLoadOrderListings(x => x.Where(x => loadOnlyThese.Contains(x.ModKey)))
                 .WithTargetDataFolder(Settings.pDataFolder)
                 .Build();
 
+            Console.WriteLine("Load Oder for Merge: ");
             foreach (var plugin in env.LoadOrder.Items)
             {
                 LoadOrder.Add(plugin.ModKey.FileName);
+                Console.WriteLine("\t" + plugin.ModKey.FileName);
             }
+
+            Console.WriteLine("Building AssetLinkCashe");
+            var assetLinkCache = env.LinkCache.CreateImmutableAssetLinkCache();
+
 
             foreach (ModKey modKey in MergeModKeys)
             {
                 Console.WriteLine(modKey);
                 if (!env.LoadOrder.TryGetValue(modKey, out var plugin) || plugin.Mod == null) continue;
 
+                Console.WriteLine("Copying Cells Items");
                 foreach (var cellblock in plugin.Mod.Cells)
                 {
                     foreach (var subBlock in cellblock.SubBlocks)
@@ -59,6 +69,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     }
                 }//End Cell Import
 
+                Console.WriteLine("Copying Worldspace Items");
                 foreach (var worldSpace in plugin.Mod.Worldspaces)
                 {
                     if(worldSpace.TopCell != null)
@@ -108,23 +119,33 @@ namespace MergePluginsMutagen.MergePluginClass
                     }
                 }//End Worldspace Import
 
+                Console.WriteLine("Copying Dialoug and Responses");
                 foreach (var dialougTopic in plugin.Mod.DialogTopics)
                 {
                     foreach (var rec in dialougTopic.Responses)
                     {
                         var context = env.LinkCache.ResolveContext<IDialogResponses, IDialogResponsesGetter>(rec.FormKey);
+                        context.GetOrAddAsOverride(MergeMod); 
 
-                        context.GetOrAddAsOverride(MergeMod);
+                        if (MergeModKeysHashSet.Contains(rec.FormKey.ModKey))
+                        {
+                            var assetPaths = rec.EnumerateResolvedAssetLinks(assetLinkCache)
+                                .Select(x => x.DataRelativePath.ToString())
+                                .ToHashSet();
+
+                            ResponseAssetLinks.Add(rec.FormKey, assetPaths);
+                        }
                     }
                 }//End Dialog Import
             }//End ModKeys foreach
         }//End AddNested()
 
-        private void ChangeFormKeys()
+        private void ChangeNestedFormKeys()
         {
             HashSet<ModKey> mergeModKeysHashSet = MergeModKeys.ToHashSet();
             foreach (var cellblock in MergeMod.Cells)
             {
+                Console.WriteLine("Changing Cell objects ID");
                 foreach (var subBlock in cellblock.SubBlocks)
                 {
                     foreach (var cell in subBlock.Cells)
@@ -152,6 +173,7 @@ namespace MergePluginsMutagen.MergePluginClass
                 }
             }//End Placed Changes
 
+            Console.WriteLine("Changing Worldspace objects ID");
             foreach (var worldSpace in MergeMod.Worldspaces)
             {
                 if (worldSpace.TopCell != null)
@@ -206,6 +228,7 @@ namespace MergePluginsMutagen.MergePluginClass
                 }
             }//End Worldspace Change
 
+            Console.WriteLine("Changing DialogTopics ID");
             foreach (var rec in MergeMod.DialogTopics.ToArray())
             {
                 if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
@@ -217,7 +240,8 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.DialogTopics.Add(rec.Duplicate(formKey));
                 }
             }//End Dialog Change
-            
+
+            Console.WriteLine("Changing Response ID");
             foreach (var dialougTopic in MergeMod.DialogTopics)
             {
                 foreach (var rec in dialougTopic.Responses.ToArray())

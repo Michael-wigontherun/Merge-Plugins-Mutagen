@@ -1,13 +1,49 @@
 ﻿using Mutagen.Bethesda;
+using Mutagen.Bethesda.Plugins.Assets;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
+using nifly;
 
 namespace MergePluginsMutagen.MergePluginClass
 {
-    public partial class MergePlugin : IMergeInformationInterface
+    public partial class MergePlugin : IMergeInformation
     {
         private void AddUniformKeys(SkyrimMod mod)
         {
+            var linkCashe = mod.ToImmutableLinkCache();
+            var assetLinkCache = linkCashe.CreateImmutableAssetLinkCache();
+
+            #region Npcs
+            foreach (var sourceForm in mod.Npcs)
+            {
+                if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
+                {
+                    var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
+
+                    MergeMap.Add(sourceForm.FormKey, formCopy.FormKey);
+                    MergeMod.Npcs.Add(formCopy);
+
+                    var assetPaths = sourceForm.EnumerateResolvedAssetLinks(assetLinkCache)
+                        .Select(x => x.DataRelativePath.ToString())
+                        .ToHashSet();
+
+                    NPCAssetLinks.Add(sourceForm.FormKey, assetPaths);
+                }
+                else if (MergeMap.ContainsKey(sourceForm.FormKey))
+                {
+                    var m = MergeMod.Npcs[MergeMap[sourceForm.FormKey]];
+                    m.DeepCopyIn(sourceForm);
+                }
+                else
+                {
+                    MergeMod.Npcs.GetOrAddAsOverride(sourceForm);
+                }
+            }
+            #endregion Npcs
+
+            //Do not remove above
+            //------------------------------------------------------------------------
+
             #region GameSettings
             foreach (var sourceForm in mod.GameSettings)
             {
@@ -858,29 +894,6 @@ namespace MergePluginsMutagen.MergePluginClass
                 }
             }
             #endregion Ammunitions
-
-            #region Npcs
-            foreach (var sourceForm in mod.Npcs)
-            {
-                if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                {
-                    var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
-
-                    MergeMap.Add(sourceForm.FormKey, formCopy.FormKey);
-
-                    MergeMod.Npcs.Add(formCopy);
-                }
-                else if (MergeMap.ContainsKey(sourceForm.FormKey))
-                {
-                    var m = MergeMod.Npcs[MergeMap[sourceForm.FormKey]];
-                    m.DeepCopyIn(sourceForm);
-                }
-                else
-                {
-                    MergeMod.Npcs.GetOrAddAsOverride(sourceForm);
-                }
-            }
-            #endregion Npcs
 
             #region LeveledNpcs
             foreach (var sourceForm in mod.LeveledNpcs)

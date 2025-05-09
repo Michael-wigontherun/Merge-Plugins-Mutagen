@@ -4,7 +4,7 @@
 
 Please do not use this yet its not fully finished or tested.
 
-## the does and does not of this
+## The Does and Does Not of this
 Does Not:
 - Merge NavMeshes records
 - Merge Cells records

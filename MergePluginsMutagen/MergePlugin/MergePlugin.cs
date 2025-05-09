@@ -8,39 +8,45 @@ using Mutagen.Bethesda.Skyrim;
 
 namespace MergePluginsMutagen.MergePluginClass
 {
-    public partial class MergePlugin : IMergeInformationInterface
+    public partial class MergePlugin : IMergeInformation
     {
         public MergePlugin(string mergeModName, List<ModKey> pluginNameList, Settings? settings = null)
         {
             Settings = settings ?? Settings.GetDefaultLocation();
             MergeMod = new SkyrimMod(mergeModName, SkyrimRelease.SkyrimSE);
             MergeModKeys = pluginNameList;
+            MergeModKeysHashSet = pluginNameList.ToHashSet();
         }
 
         private SkyrimMod MergeMod;
 
-        public Dictionary<FormKey, FormKey> Build()
+        private HashSet<ModKey> MergeModKeysHashSet;
+
+        public IMergeInformation Build()
         {
             AddNested();
             
-            ChangeFormKeys();
+            ChangeNestedFormKeys();
 
             foreach (var key in MergeModKeys)
             {
                 //SkyrimMod mod = SkyrimMod.CreateFromBinary(Path.Combine(Settings.pDataFolder, key.FileName), SkyrimRelease.SkyrimSE);
+                Console.WriteLine("Duplicating records from " + key.FileName);
                 AddUniformKeys(SkyrimMod.CreateFromBinary(Path.Combine(Settings.pDataFolder, key.FileName), SkyrimRelease.SkyrimSE));
             }
 
+            Console.WriteLine("Remapping IDs");
             MergeMod.RemapLinks(MergeMap);
 
             Save();
-            return MergeMap;
+
+            return (IMergeInformation)this;
         }
 
         private HashSet<ModKey> BuildOnlyLoadTheseList()
         {
             //OnlyLoadThese = MergeModKeys.ToHashSet();
-
+            Console.WriteLine("Building Load order");
             var locator = new TransitiveMasterLocator(
                 new System.IO.Abstractions.FileSystem(),
                 new DataDirectoryInjection(Settings.pDataFolder),
@@ -50,6 +56,7 @@ namespace MergePluginsMutagen.MergePluginClass
 
         private void Save()
         {
+            Console.WriteLine("Saving Merge");
             foreach (var rec in MergeMod.EnumerateMajorRecords())
             {
                 rec.IsCompressed = false;

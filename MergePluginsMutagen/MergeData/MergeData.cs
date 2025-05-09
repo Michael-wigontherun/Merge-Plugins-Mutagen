@@ -10,25 +10,42 @@ using System.Threading.Tasks;
 
 namespace MergePluginsMutagen.MergeData
 {
-    public partial class MergeDataFiles : IMergeInformationInterface
+    public partial class MergeDataFiles : IMergeInformation
     {
-        public MergeDataFiles(List<ModKey> pluginNameList, Dictionary<FormKey, FormKey> mergeMap, Settings? settings = null)
+        public MergeDataFiles(IMergeInformation mergeInformation)
+        {
+            Settings = mergeInformation.Settings;
+            MergeModKeys = mergeInformation.MergeModKeys;
+            MergeMap = mergeInformation.MergeMap;
+            ResponseAssetLinks = mergeInformation.ResponseAssetLinks;
+            NPCAssetLinks = mergeInformation.NPCAssetLinks;
+            //ConvertMap();
+        }
+
+        public MergeDataFiles(List<ModKey> pluginNameList, 
+            Dictionary<FormKey, FormKey> mergeMap, 
+            Dictionary<FormKey, HashSet<string>> responseAssetLinks, 
+            Dictionary<FormKey, HashSet<string>> npcAssetLinks, 
+            Settings? settings = null)
         {
             Settings = settings ?? Settings.GetDefaultLocation();
             MergeModKeys = pluginNameList;
             MergeMap = mergeMap;
-            ConvertMap();
+            ResponseAssetLinks = responseAssetLinks;
+            NPCAssetLinks = npcAssetLinks;
+            //ConvertMap();
         }
 
-        private HashSet<FileComparableData> ConvertedData = new ();
-        
-        private void ConvertMap()
-        {
-            foreach(var data in MergeMap)
-            {
-                ConvertedData.Add(new FileComparableData(data.Key.ModKey.FileName, data.Key.IDString(), data.Value.ModKey.FileName, data.Value.IDString()));
-            }
-        }
+        //private HashSet<FileComparableData> ConvertedData = new();
+
+        //private MergeDataFiles ConvertMap()
+        //{
+        //    foreach (var data in MergeMap)
+        //    {
+        //        ConvertedData.Add(new FileComparableData(data.Key.ModKey.FileName, data.Key.IDString(), data.Value.ModKey.FileName, data.Value.IDString()));
+        //    }
+        //    return this;
+        //}
 
         public MergeDataFiles ExtractData()
         {
@@ -69,6 +86,31 @@ namespace MergePluginsMutagen.MergeData
 
             m.WaitForExit();
             m.Dispose();
+        }
+
+        public string? CopyFile(string dataPath, string filePath, FormKey key, bool move = false)
+        {
+            if (MergeMap.TryGetValue(key, out var newFormKey))
+            {
+                string newPath = filePath.Replace(key.ModKey.FileName, newFormKey.ModKey.FileName, StringComparison.OrdinalIgnoreCase);
+                newPath = newPath.Replace(key.IDString().TrimStart('0'), newFormKey.IDString().TrimStart('0'), StringComparison.OrdinalIgnoreCase);
+
+                string orgPath = Path.Combine(dataPath, filePath);
+                newPath = Path.Combine(Settings.pOutputFolder, newPath);
+
+                Directory.CreateDirectory(Path.GetDirectoryName(newPath)!);
+                if (move)
+                {
+                    File.Move(orgPath, newPath, true);
+                }
+                else
+                {
+                    File.Copy(orgPath, newPath, true);
+                }
+
+                return newPath;
+            }
+            return null;
         }
 
         public class FileComparableData
