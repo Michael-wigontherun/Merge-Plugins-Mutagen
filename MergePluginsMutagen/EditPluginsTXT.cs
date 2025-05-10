@@ -11,6 +11,7 @@ namespace MergePluginsMutagen
     {
         public static void ChangePluginsTXT(HashSet<ModKey> pluginNameList, string pluginsTXTPath)
         {
+            bool changed = false;
             string[] array = File.ReadAllLines(pluginsTXTPath);
             for (int i = 0; i < array.Length; i++)
             {
@@ -20,11 +21,13 @@ namespace MergePluginsMutagen
                     if (pluginNameList.Contains(ModKey.FromFileName(line)))
                     {
                         array[i] = line;
+                        changed = true;
                     }
                 }
                 catch (ArgumentException) { }
             }
-            File.WriteAllLines(pluginsTXTPath, array);
+
+            if(changed) File.WriteAllLines(pluginsTXTPath, array);
         }
     }
 }
