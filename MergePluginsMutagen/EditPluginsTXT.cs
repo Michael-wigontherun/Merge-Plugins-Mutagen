@@ -14,15 +14,17 @@ namespace MergePluginsMutagen
             string[] array = File.ReadAllLines(pluginsTXTPath);
             for (int i = 0; i < array.Length; i++)
             {
+                string line = array[i].TrimStart('*');
                 try
                 {
-                    if (pluginNameList.Contains(ModKey.FromFileName(array[i].TrimStart('*'))))
+                    if (pluginNameList.Contains(ModKey.FromFileName(line)))
                     {
-                        array[i] = array[i].TrimStart('*');
+                        array[i] = line;
                     }
                 }
                 catch (ArgumentException) { }
             }
+            File.WriteAllLines(pluginTXTPath, array);
         }
     }
 }
