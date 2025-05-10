@@ -63,11 +63,15 @@ namespace MergePluginsMutagen
                     .HandleVoiceFiles()
                     .HandleFaceGenFiles();
 
-                //EditPluginsTXT.ChangePluginsTXT(pluginNameList.ToHashSet(), Settings.pPluginstxt);
+                EditPluginsTXT.ChangePluginsTXT(pluginNameList.ToHashSet(), Settings.pPluginstxt);
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.StackTrace!.ToString());
+                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine("Press Enter to Close...");
+                Console.ReadLine();
+                return;
             }
 
             if (Pause)
