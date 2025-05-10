@@ -24,7 +24,7 @@ namespace MergePluginsMutagen
                 }
                 catch (ArgumentException) { }
             }
-            File.WriteAllLines(pluginTXTPath, array);
+            File.WriteAllLines(pluginsTXTPath, array);
         }
     }
 }
