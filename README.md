@@ -10,6 +10,7 @@ Does Not:
 - Merge Cells records
 - Merge Worldspaces records
 - Merge NavigationInfoOnMap records
+
 It does not do any of those things.
 
 Q: Why?
@@ -21,7 +22,7 @@ Does do:
 - Merges Placed objects inside of Cells
 - Merges Placed objects inside of Worldspaces
 - Copy and override existing NavMeshes
-- Merges all other record types
+- Merges all other record types except NavigationInfoOnMap
 
 Q: You said it does not merge Cells and Worldspaces?
 
@@ -37,7 +38,7 @@ I made this with the intent to merge patches and other things that I wish were a
 2. Download and install BSA Browser
 3. Download this and extract somewhere other then your data folder
    - Do not place this in your data folder or a mod folder
-4. Edit MergePluginsMutagen.ini, every setting is required to run properly
+4. Edit MergePluginsMutagen.ini, every setting under the [mod] header is required to run properly
 
 # Usage
 
@@ -70,21 +71,24 @@ Tems Patches Manual Patch Merge.esp
 ## setting up the CLI
 CLI takes 1-3 arguments
 
-Argument 1: Is a the path to the text file 
+### Argument 1: 
+Is a the path to the text file 
 
 Example: 
  ```
  "merges\TemsPatchesMerge.esp.txt"
 ```
 
-Argument 2: If you want to use a sperate location of the ini. you can set the path to a different location.
+### Argument 2: 
+If you want to use a sperate location of the ini. you can set the path to a different location.
 
 Example: 
  ```
  "merges\TemsPatchesMerge.esp.txt.ini"
  ```
 
-Argument 3: Is the set for if you want the console to close on successful merging
+### Argument 3: 
+Is the set for if you want the console to close on successful merging
 
 Example:
  ```
