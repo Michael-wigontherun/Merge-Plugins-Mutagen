@@ -38,7 +38,6 @@ namespace MergePluginsMutagen
 
         public void Output(string path)
         {
-            Console.WriteLine(path);
             Directory.CreateDirectory(path.Replace(Path.GetFileName(path),""));
             File.WriteAllText(path, JsonSerializer.Serialize(this, new JsonSerializerOptions { 
                 WriteIndented = true,

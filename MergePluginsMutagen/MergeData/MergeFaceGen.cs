@@ -6,7 +6,7 @@ namespace MergePluginsMutagen.MergeData
         public MergeDataFiles HandleFaceGenFiles()
         {
             HandleFaceGenFiles(Settings.pOutputFolder, Settings.iMoveFiles);
-            HandleFaceGenFiles(Settings.pDataFolder);
+            HandleFaceGenFiles(Settings.pDataFolder, false);
             return this;
         }
 
@@ -20,7 +20,7 @@ namespace MergePluginsMutagen.MergeData
                     if (File.Exists(Path.Combine(dataPath, item)))
                     //if(LocateFaceGenFile(dataFolder, item, responseData.Key, move))
                     {
-                        Console.WriteLine(Path.Combine(dataPath, item));
+                        //Console.WriteLine(Path.Combine(dataPath, item));
                         string? newPath = CopyFile(dataPath, item, npcData.Key, move);
                         if (newPath != null && !newPath.Equals(String.Empty) && !newPath.Equals(""))
                         { 

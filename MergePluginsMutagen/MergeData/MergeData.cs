@@ -37,6 +37,7 @@ namespace MergePluginsMutagen.MergeData
 
         public MergeDataFiles ExtractData()
         {
+            Console.WriteLine("Extracting files from merged mods BSAs, if any.");
             foreach (ModKey pluginName in MergeModKeys)
             {
                 string bsaPath = GetBSAPath(pluginName.FileName, out var bsaTexPath);
