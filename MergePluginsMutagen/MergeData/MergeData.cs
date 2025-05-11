@@ -5,13 +5,8 @@ namespace MergePluginsMutagen.MergeData
 {
     public partial class MergeDataFiles : IMergeInformation
     {
-        public MergeDataFiles(IMergeInformation mergeInformation)
+        public MergeDataFiles(IMergeInformation mergeInformation) : base(mergeInformation)
         {
-            Settings = mergeInformation.Settings;
-            MergeModKeys = mergeInformation.MergeModKeys;
-            MergeMap = mergeInformation.MergeMap;
-            ResponseAssetLinks = mergeInformation.ResponseAssetLinks;
-            NPCAssetLinks = mergeInformation.NPCAssetLinks;
             //ConvertMap();
         }
 
@@ -19,13 +14,13 @@ namespace MergePluginsMutagen.MergeData
             Dictionary<FormKey, FormKey> mergeMap, 
             Dictionary<FormKey, HashSet<string>> responseAssetLinks, 
             Dictionary<FormKey, HashSet<string>> npcAssetLinks, 
-            Settings? settings = null)
+            Settings? settings = null) : 
+            base(pluginNameList, 
+                mergeMap, 
+                responseAssetLinks, 
+                npcAssetLinks, 
+                settings ?? Settings.GetDefaultLocation())
         {
-            Settings = settings ?? Settings.GetDefaultLocation();
-            MergeModKeys = pluginNameList;
-            MergeMap = mergeMap;
-            ResponseAssetLinks = responseAssetLinks;
-            NPCAssetLinks = npcAssetLinks;
             //ConvertMap();
         }
 

@@ -4,16 +4,20 @@ using Mutagen.Bethesda.Environments.DI;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Masters.DI;
 using Mutagen.Bethesda.Skyrim;
+using System.Transactions;
 
 namespace MergePluginsMutagen.MergePluginClass
 {
     public partial class MergePlugin : IMergeInformation
     {
-        public MergePlugin(string mergeModName, List<ModKey> pluginNameList, Settings? settings = null)
+        public MergePlugin(string mergeModName, List<ModKey> pluginNameList, Settings? settings = null) : 
+            base(pluginNameList, 
+                new Dictionary<FormKey, FormKey>(), 
+                new Dictionary<FormKey, HashSet<string>>(), 
+                new Dictionary<FormKey, HashSet<string>>(), 
+                settings ?? Settings.GetDefaultLocation())
         {
-            Settings = settings ?? Settings.GetDefaultLocation();
             MergeMod = new SkyrimMod(mergeModName, SkyrimRelease.SkyrimSE);
-            MergeModKeys = pluginNameList;
             MergeModKeysHashSet = pluginNameList.ToHashSet();
         }
 
