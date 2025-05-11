@@ -12,6 +12,14 @@ namespace MergePluginsMutagen.MergePluginClass
             var linkCashe = mod.ToImmutableLinkCache();
             var assetLinkCache = linkCashe.CreateImmutableAssetLinkCache();
 
+            if (mod.NavigationMeshInfoMaps.Any())
+            {
+                ContainsMergedPluginsHoldingNavMap = true;
+                Console.WriteLine(mod.ModKey.FileName + " Contains NavigationMeshInfoMaps.");
+                Console.WriteLine("You will need to load CK and resave file.");
+                Console.WriteLine("And fix any issues manually.");
+            }
+
             #region Npcs
             foreach (var sourceForm in mod.Npcs)
             {

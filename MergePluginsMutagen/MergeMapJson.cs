@@ -8,22 +8,32 @@ namespace MergePluginsMutagen
     public class MergeMapJson
     {
         [JsonInclude]
-        public string MergeName = "";
+        public string MergeName;
         [JsonInclude]
-        public List<MapKeyJson> MapKeysJson = new();
+        public List<MapKeyJson> MapKeysJson;
         [JsonInclude]
-        public List<ModKey> MergeModKeys = new();
+        public List<ModKey> MergeModKeys;
+        [JsonInclude]
+        public bool ContainsMergedPluginsHoldingNavMap;
 
-        public MergeMapJson() { }
+        public MergeMapJson()
+        {
+            MergeName = "";
+            MapKeysJson = new();
+            MergeModKeys = new();
+            ContainsMergedPluginsHoldingNavMap = false;
+        }
         
-        public MergeMapJson(Dictionary<FormKey, FormKey> MergeMap, string mergeName, List<ModKey> mergeModKeys)
+        public MergeMapJson(Dictionary<FormKey, FormKey> MergeMap, string mergeName, List<ModKey> mergeModKeys, bool containsMergedPluginsHoldingNavMap = false)
         {
             MergeName = mergeName;
-            foreach(var m in MergeMap)
+            MapKeysJson = new();
+            foreach (var m in MergeMap)
             {
                 MapKeysJson.Add(new(m.Key.ToString(), m.Value.ToString()));
             }
             MergeModKeys = mergeModKeys;
+            ContainsMergedPluginsHoldingNavMap = containsMergedPluginsHoldingNavMap;
         }
 
         public void Output(string path)

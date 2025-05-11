@@ -4,7 +4,6 @@ using Mutagen.Bethesda.Environments.DI;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Masters.DI;
 using Mutagen.Bethesda.Skyrim;
-using System.Transactions;
 
 namespace MergePluginsMutagen.MergePluginClass
 {
@@ -24,6 +23,8 @@ namespace MergePluginsMutagen.MergePluginClass
         private SkyrimMod MergeMod;
 
         private HashSet<ModKey> MergeModKeysHashSet;
+
+        private bool ContainsMergedPluginsHoldingNavMap = false;
 
         public IMergeInformation Build()
         {
@@ -73,7 +74,8 @@ namespace MergePluginsMutagen.MergePluginClass
 
             string baseJsonOutputPath = Path.Combine(Settings.pOutputFolder, "merge - " + Path.GetFileNameWithoutExtension(MergeMod.ModKey.FileName));
 
-            var mapJSON = new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys);
+            var mapJSON = new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys, 
+                containsMergedPluginsHoldingNavMap: ContainsMergedPluginsHoldingNavMap);
             mapJSON.Output(Path.Combine(baseJsonOutputPath, MergeMod.ModKey.FileName + ".json"));
 
             new mergeJson(MergeMod.ModKey.FileName, LoadOrder, File.GetLastWriteTime(modOutputPath).ToLongTimeString(), MergeModKeys)
