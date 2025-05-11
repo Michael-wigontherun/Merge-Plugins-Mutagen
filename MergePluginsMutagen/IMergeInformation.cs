@@ -1,9 +1,4 @@
 ﻿using Mutagen.Bethesda.Plugins;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MergePluginsMutagen
 {
@@ -21,11 +16,12 @@ namespace MergePluginsMutagen
 
         public IMergeInformation() { }
 
-        public IMergeInformation(List<ModKey> mergeModKeys, Dictionary<FormKey, FormKey> mergeMap, Dictionary<FormKey, HashSet<string>> responseAssetLinks, Settings settings)
+        public IMergeInformation(List<ModKey> mergeModKeys, Dictionary<FormKey, FormKey> mergeMap, Dictionary<FormKey, HashSet<string>> responseAssetLinks, Dictionary<FormKey, HashSet<string>> nPCAssetLinks, Settings settings)
         {
             MergeModKeys = mergeModKeys;
             MergeMap = mergeMap;
-            this.ResponseAssetLinks = responseAssetLinks;
+            ResponseAssetLinks = responseAssetLinks;
+            NPCAssetLinks = nPCAssetLinks;
             Settings = settings;
         }
 

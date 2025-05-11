@@ -1,14 +1,6 @@
 ﻿using Mutagen.Bethesda.Plugins;
-using Noggog;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace MergePluginsMutagen.zMergeJson
 {

@@ -1,13 +1,10 @@
 ﻿using DynamicData;
-using MergePluginsMutagen;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Assets;
 using Mutagen.Bethesda.Skyrim;
-using nifly;
 using Noggog;
-using System.Linq;
 
 namespace MergePluginsMutagen.MergePluginClass
 {

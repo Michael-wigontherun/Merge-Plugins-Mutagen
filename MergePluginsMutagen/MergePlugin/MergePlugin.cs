@@ -1,5 +1,4 @@
-﻿using MergePluginsMutagen;
-using MergePluginsMutagen.zMergeJson;
+﻿using MergePluginsMutagen.zMergeJson;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments.DI;
 using Mutagen.Bethesda.Plugins;

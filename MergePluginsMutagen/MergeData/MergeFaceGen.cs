@@ -1,13 +1,4 @@
-﻿using DynamicData;
-using Mutagen.Bethesda.Plugins;
-using Mutagen.Bethesda.Skyrim;
-using Noggog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MergePluginsMutagen.MergeData
 {
     public partial class MergeDataFiles : IMergeInformation

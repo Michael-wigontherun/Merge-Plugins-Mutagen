@@ -2,7 +2,6 @@
 using Mutagen.Bethesda.Plugins.Assets;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
-using nifly;
 
 namespace MergePluginsMutagen.MergePluginClass
 {
