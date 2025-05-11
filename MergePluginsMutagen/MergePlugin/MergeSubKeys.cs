@@ -74,6 +74,13 @@ namespace MergePluginsMutagen.MergePluginClass
                 {
                     if(worldSpace.TopCell != null)
                     {
+                        foreach(var rec in worldSpace.TopCell.NavigationMeshes)
+                        {
+                            var context = env.LinkCache.ResolveContext<INavigationMesh, INavigationMeshGetter>(rec.FormKey);
+
+                            context.GetOrAddAsOverride(MergeMod);
+                        }
+
                         foreach (var rec in worldSpace.TopCell.Persistent)
                         {
                             var context = env.LinkCache.ResolveContext<IPlaced, IPlacedGetter>(rec.FormKey);
