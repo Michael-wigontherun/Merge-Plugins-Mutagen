@@ -971,31 +971,6 @@ namespace MergePluginsMutagen.MergePluginClass
             }
             #endregion Ammunitions
 
-            #region Npcs
-            foreach (var sourceForm in mod.Npcs)
-            {
-                if (MergeMap.ContainsKey(sourceForm.FormKey))
-                {
-                    //var m = MergeMod.Npcs[MergeMap[sourceForm.FormKey]];
-                    //m.DeepCopyIn(sourceForm);
-                    MergeMod.Npcs[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
-                }
-                //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
-                {
-                    var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
-
-                    MergeMap.Add(sourceForm.FormKey, formCopy.FormKey);
-
-                    MergeMod.Npcs.Add(formCopy);
-                }
-                else
-                {
-                    MergeMod.Npcs.GetOrAddAsOverride(sourceForm);
-                }
-            }
-            #endregion Npcs
-
             #region LeveledNpcs
             foreach (var sourceForm in mod.LeveledNpcs)
             {
