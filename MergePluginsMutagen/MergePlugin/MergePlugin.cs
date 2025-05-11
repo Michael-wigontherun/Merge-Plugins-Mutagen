@@ -1,4 +1,5 @@
-﻿using MergePluginsMutagen.zMergeJson;
+﻿using DynamicData;
+using MergePluginsMutagen.zMergeJson;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments.DI;
 using Mutagen.Bethesda.Plugins;
@@ -72,6 +73,8 @@ namespace MergePluginsMutagen.MergePluginClass
                 .WithDefaultLoadOrder()
                 .Write();
 
+            CreateSEQFileForMod();
+
             string baseJsonOutputPath = Path.Combine(Settings.pOutputFolder, "merge - " + Path.GetFileNameWithoutExtension(MergeMod.ModKey.FileName));
 
             var mapJSON = new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys, 
@@ -88,6 +91,25 @@ namespace MergePluginsMutagen.MergePluginClass
                 .Output(Path.Combine(baseJsonOutputPath, "fidCache.json"));
         }
 
+        private void CreateSEQFileForMod()
+        {
+            uint uintToAdd = 0x01000000 * Convert.ToUInt32(MergeMod.ModHeader.MasterReferences.Count);
+
+            List<byte> ids = new();
+            foreach (var quest in MergeMod.Quests)
+            {
+                if (!quest.FormKey.ModKey.Equals(MergeMod.ModKey)) continue;//needed incase the quest is a overriden start game quest they sould not be in the seq generated file
+
+                if (quest.Flags.HasFlag(Quest.Flag.StartGameEnabled))
+                {
+                    ids.Add(BitConverter.GetBytes(quest.FormKey.ID + uintToAdd));
+                }
+            }
+
+            string folderPath = Path.Combine(Settings.pOutputFolder, "seq");
+            Directory.CreateDirectory(folderPath);
+            File.WriteAllBytes(Path.Combine(folderPath, Path.ChangeExtension(MergeMod.ModKey.FileName, "seq")), ids.ToArray());
+        }
     }
     
 }
