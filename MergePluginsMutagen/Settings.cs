@@ -40,6 +40,7 @@ namespace MergePluginsMutagen
 
             IConfigurationSection Advanced = config.GetSection("Advanced");
             aDisableNavigationMeshInfoMapsCheck = bool.Parse(Advanced["aDisableNavigationMeshInfoMapsCheck"]!);
+            aDisableInvalidateJustOverrideEverything = bool.Parse(Advanced["aDisableInvalidateJustOverrideEverything"]!);
         }
 
         //[paths]
@@ -57,6 +58,7 @@ namespace MergePluginsMutagen
 
         //[Advanced]
         public bool aDisableNavigationMeshInfoMapsCheck = false;
+        public bool aDisableInvalidateJustOverrideEverything = false;
 
     }
 }

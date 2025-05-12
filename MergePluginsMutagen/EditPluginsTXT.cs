@@ -4,7 +4,7 @@ namespace MergePluginsMutagen
 {
     public static class EditPluginsTXT
     {
-        public static void ChangePluginsTXT(HashSet<ModKey> pluginNameList, string pluginsTXTPath)
+        public static void ChangePluginsTXT(HashSet<ModKey> pluginNameList, string pluginsTXTPath, HashSet<ModKey> dontDisable)
         {
             Console.WriteLine("Disabling merged plugins inside plugins.txt");
             Console.WriteLine("Path: " + pluginsTXTPath);
@@ -15,7 +15,10 @@ namespace MergePluginsMutagen
                 string line = array[i].TrimStart('*');
                 try
                 {
-                    if (pluginNameList.Contains(ModKey.FromFileName(line)))
+                    ModKey modKey = ModKey.FromFileName(line);
+                    if(dontDisable.Contains(modKey)) continue;
+                    
+                    if (pluginNameList.Contains(modKey))
                     {
                         array[i] = line;
                         changed = true;

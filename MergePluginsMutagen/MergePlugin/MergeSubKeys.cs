@@ -156,6 +156,8 @@ namespace MergePluginsMutagen.MergePluginClass
                     {
                         foreach (var rec in cell.Persistent)
                         {
+                            if(DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                             if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                             {
                                 FormKey formKey = MergeMod.GetNextFormKey();
@@ -166,6 +168,8 @@ namespace MergePluginsMutagen.MergePluginClass
 
                         foreach (var rec in cell.Temporary)
                         {
+                            if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                             if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                             {
                                 FormKey formKey = MergeMod.GetNextFormKey();
@@ -184,6 +188,8 @@ namespace MergePluginsMutagen.MergePluginClass
                 {
                     foreach (var rec in worldSpace.TopCell.Persistent)
                     {
+                        if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                         if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                         {
                             FormKey formKey = MergeMod.GetNextFormKey();
@@ -193,6 +199,8 @@ namespace MergePluginsMutagen.MergePluginClass
                     }
                     foreach (var rec in worldSpace.TopCell.Temporary)
                     {
+                        if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                         if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                         {
                             FormKey formKey = MergeMod.GetNextFormKey();
@@ -210,6 +218,8 @@ namespace MergePluginsMutagen.MergePluginClass
                         {
                             foreach (var rec in cell.Persistent)
                             {
+                                if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                                 if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                                 {
                                     FormKey formKey = MergeMod.GetNextFormKey();
@@ -220,6 +230,8 @@ namespace MergePluginsMutagen.MergePluginClass
 
                             foreach (var rec in cell.Temporary)
                             {
+                                if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                                 if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                                 {
                                     FormKey formKey = MergeMod.GetNextFormKey();
@@ -235,6 +247,8 @@ namespace MergePluginsMutagen.MergePluginClass
             Console.WriteLine("Changing DialogTopics ID");
             foreach (var rec in MergeMod.DialogTopics.ToArray())
             {
+                if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                 if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                 {
                     FormKey formKey = MergeMod.GetNextFormKey();
@@ -250,6 +264,8 @@ namespace MergePluginsMutagen.MergePluginClass
             {
                 foreach (var rec in dialougTopic.Responses.ToArray())
                 {
+                    if (DontChangeFormIDs.Contains(rec.FormKey.ModKey)) continue;
+
                     if (mergeModKeysHashSet.Contains(rec.FormKey.ModKey))
                     {
                         FormKey formKey = MergeMod.GetNextFormKey();

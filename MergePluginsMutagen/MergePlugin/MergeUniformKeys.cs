@@ -30,7 +30,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Npcs[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -63,7 +63,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.GameSettings[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -88,7 +88,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Keywords[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -113,7 +113,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LocationReferenceTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -138,7 +138,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Actions[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -163,7 +163,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.TextureSets[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -188,7 +188,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Globals[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -213,7 +213,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Classes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -238,7 +238,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Factions[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -263,7 +263,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.HeadParts[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -288,7 +288,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Hairs[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -313,7 +313,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Eyes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -338,7 +338,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Races[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -363,7 +363,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.SoundMarkers[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -388,7 +388,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.AcousticSpaces[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -413,7 +413,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MagicEffects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -438,7 +438,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LandscapeTextures[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -463,7 +463,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ObjectEffects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -488,7 +488,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Spells[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -513,7 +513,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Scrolls[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -538,7 +538,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Activators[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -563,7 +563,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.TalkingActivators[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -588,7 +588,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Armors[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -613,7 +613,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Books[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -638,7 +638,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Containers[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -663,7 +663,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Doors[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -688,7 +688,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Ingredients[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -713,7 +713,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Lights[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -738,7 +738,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MiscItems[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -763,7 +763,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.AlchemicalApparatuses[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -788,7 +788,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Statics[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -813,7 +813,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MoveableStatics[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -838,7 +838,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Grasses[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -863,7 +863,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Trees[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -888,7 +888,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Florae[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -913,7 +913,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Furniture[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -938,7 +938,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Weapons[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -963,7 +963,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Ammunitions[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -988,7 +988,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LeveledNpcs[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1013,7 +1013,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Keys[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1038,7 +1038,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Ingestibles[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1063,7 +1063,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.IdleMarkers[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1088,7 +1088,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ConstructibleObjects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1113,7 +1113,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Projectiles[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1138,7 +1138,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Hazards[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1163,7 +1163,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.SoulGems[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1188,7 +1188,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LeveledItems[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1213,7 +1213,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Weathers[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1238,7 +1238,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Climates[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1263,7 +1263,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ShaderParticleGeometries[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1288,7 +1288,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.VisualEffects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1313,7 +1313,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Regions[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1338,7 +1338,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Quests[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1363,7 +1363,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.IdleAnimations[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1388,7 +1388,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Packages[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1413,7 +1413,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.CombatStyles[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1438,7 +1438,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LoadScreens[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1463,7 +1463,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LeveledSpells[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1488,7 +1488,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.AnimatedObjects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1513,7 +1513,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Waters[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1538,7 +1538,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.EffectShaders[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1563,7 +1563,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Explosions[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1588,7 +1588,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Debris[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1613,7 +1613,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ImageSpaces[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1638,7 +1638,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ImageSpaceAdapters[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1663,7 +1663,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.FormLists[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1688,7 +1688,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Perks[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1713,7 +1713,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.BodyParts[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1738,7 +1738,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.AddonNodes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1763,7 +1763,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ActorValueInformation[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1788,7 +1788,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.CameraShots[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1813,7 +1813,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.CameraPaths[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1838,7 +1838,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.VoiceTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1863,7 +1863,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MaterialTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1888,7 +1888,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Impacts[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1913,7 +1913,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ImpactDataSets[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1938,7 +1938,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ArmorAddons[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1963,7 +1963,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.EncounterZones[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -1988,7 +1988,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Locations[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2013,7 +2013,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Messages[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2038,7 +2038,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.DefaultObjectManagers[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2063,7 +2063,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.LightingTemplates[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2088,7 +2088,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MusicTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2113,7 +2113,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Footsteps[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2138,7 +2138,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.FootstepSets[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2163,7 +2163,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.StoryManagerBranchNodes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2188,7 +2188,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.StoryManagerQuestNodes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2213,7 +2213,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.StoryManagerEventNodes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2238,7 +2238,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.DialogBranches[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2263,7 +2263,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MusicTracks[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2288,7 +2288,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.DialogViews[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2313,7 +2313,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.WordsOfPower[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2338,7 +2338,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Shouts[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2363,7 +2363,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.EquipTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2388,7 +2388,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Relationships[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2413,7 +2413,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Scenes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2438,7 +2438,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.AssociationTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2463,7 +2463,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Outfits[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2488,7 +2488,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ArtObjects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2513,7 +2513,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MaterialObjects[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2538,7 +2538,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.MovementTypes[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2563,7 +2563,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.SoundDescriptors[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2588,7 +2588,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.DualCastData[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2613,7 +2613,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.SoundCategories[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2638,7 +2638,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.SoundOutputModels[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2663,7 +2663,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.CollisionLayers[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2688,7 +2688,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.Colors[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2713,7 +2713,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.ReverbParameters[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 
@@ -2738,7 +2738,7 @@ namespace MergePluginsMutagen.MergePluginClass
                     MergeMod.VolumetricLightings[MergeMap[sourceForm.FormKey]].DeepCopyIn(sourceForm);
                 }
                 //if (sourceForm.FormKey.ModKey.Equals(mod.ModKey))
-                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey))
+                else if (MergeModKeysHashSet.Contains(sourceForm.FormKey.ModKey) && !DontChangeFormIDs.Contains(sourceForm.FormKey.ModKey))
                 {
                     var formCopy = sourceForm.Duplicate(MergeMod.GetNextFormKey());
 

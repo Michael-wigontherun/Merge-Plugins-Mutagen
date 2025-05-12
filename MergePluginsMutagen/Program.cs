@@ -2,6 +2,7 @@
 using MergePluginsMutagen.MergePluginClass;
 using MergePluginsMutagen.MergeData;
 using Mutagen.Bethesda.Skyrim;
+using DynamicData;
 
 namespace MergePluginsMutagen
 {
@@ -13,6 +14,11 @@ namespace MergePluginsMutagen
 
         internal static void Main(string[] args)
         {
+            //args = new string[]
+            //{
+            //    "C:\\Modding\\SkyrimSE\\_Notes\\Merges\\TemsPatchesMerge.esp.txt",
+            //    "C:\\Modding\\SkyrimSE\\_Notes\\Merges\\_MergePluginsMutagen.ini"
+            //};
             try
             {
                 if (args.Length >= 2)
@@ -40,7 +46,7 @@ namespace MergePluginsMutagen
 
                 string mergeModName = Path.GetFileName(args[0].Replace(".txt", ""));
 
-                List<ModKey> pluginNameList = WillNotMergeCheck(File.ReadAllLines(args[0]));
+                List<ModKey> pluginNameList = WillNotMergeCheck(File.ReadAllLines(args[0]), out HashSet<ModKey> dontChangeFormIDs);
 
                 if(pluginNameList.Count <= 1)
                 {
@@ -57,7 +63,7 @@ namespace MergePluginsMutagen
                 }
 
                 Console.WriteLine("Starting Merge");
-                var MergeInformation = new MergePlugin(mergeModName, pluginNameList, settings: Settings)
+                var MergeInformation = new MergePlugin(mergeModName, pluginNameList, dontChangeFormIDs: dontChangeFormIDs, settings: Settings)
                     .Build();
 
                 new MergeDataFiles(MergeInformation)
@@ -65,7 +71,7 @@ namespace MergePluginsMutagen
                     .HandleVoiceFiles()
                     .HandleFaceGenFiles();
 
-                EditPluginsTXT.ChangePluginsTXT(pluginNameList.ToHashSet(), Settings.pPluginstxt);
+                EditPluginsTXT.ChangePluginsTXT(pluginNameList.ToHashSet(), Settings.pPluginstxt, dontChangeFormIDs);
             }
             catch(Exception ex)
             {
@@ -83,7 +89,7 @@ namespace MergePluginsMutagen
             }
         }
 
-        internal static List<ModKey> WillNotMergeCheck(string[] pluginNameListArr)
+        internal static List<ModKey> WillNotMergeCheck(string[] pluginNameListArr, out HashSet<ModKey> dontChangeFormIDs)
         {
             Console.WriteLine("Checking for Valid plugins");
             List<ModKey> pluginNameList = new();
@@ -111,11 +117,12 @@ namespace MergePluginsMutagen
                 catch (ArgumentException) { Console.WriteLine("Not a plugin"); }
             }
 
-            return InvalidateModsForMerge(pluginNameList);
+            return InvalidateModsForMerge(pluginNameList, out dontChangeFormIDs);
         }
 
-        internal static List<ModKey> InvalidateModsForMerge(List<ModKey> pluginNameList)
+        internal static List<ModKey> InvalidateModsForMerge(List<ModKey> pluginNameList, out HashSet<ModKey> dontChangeFormIDs)
         {
+            dontChangeFormIDs = new();
             Console.WriteLine("Invalidating plugins");
             List<ModKey> invalidMods = new();
             foreach (var key in pluginNameList)
@@ -207,17 +214,25 @@ namespace MergePluginsMutagen
             {
                 foreach (var key in invalidMods)
                 {
-                    pluginNameList.Remove(key);
+                    
                     Console.WriteLine($"Invalid for merge: {key.FileName}");
+                    if (Settings.aDisableInvalidateJustOverrideEverything)
+                    {
+                        dontChangeFormIDs.Add(key);
+                    }
+                    else pluginNameList.Remove(key);
                 }
 
-                Console.WriteLine("Those Invalid for merge contain a new Cell, Worldspace, or a Navigation Mesh Info Map record.");
-                Console.WriteLine("These are not something that are supported by this merge tool for a number of reasons.");
-                Console.WriteLine("But the major reasons are without them the game is prone to crashing.");
-                Console.WriteLine("And I do not have a reliable way of combining Navigation Mesh Info Map record.");
-                Console.WriteLine("If someone does develop a solution and wants to add it to this I will gladly except it.");
-                Console.WriteLine("Press Enter to Continue with the Merge...");
-                Console.ReadLine();
+                if (!Settings.aDisableInvalidateJustOverrideEverything)
+                {
+                    Console.WriteLine("Those Invalid for merge contain a new Cell, Worldspace, or a Navigation Mesh Info Map record.");
+                    Console.WriteLine("These are not something that are supported by this merge tool for a number of reasons.");
+                    Console.WriteLine("But the major reasons are without them the game is prone to crashing.");
+                    Console.WriteLine("And I do not have a reliable way of combining Navigation Mesh Info Map record.");
+                    Console.WriteLine("If someone does develop a solution and wants to add it to this I will gladly except it.");
+                    Console.WriteLine("Press Enter to Continue with the Merge...");
+                    Console.ReadLine();
+                }
             }
 
             return pluginNameList;

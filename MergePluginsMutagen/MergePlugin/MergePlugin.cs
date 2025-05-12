@@ -11,7 +11,7 @@ namespace MergePluginsMutagen.MergePluginClass
 {
     public partial class MergePlugin : IMergeInformation
     {
-        public MergePlugin(string mergeModName, List<ModKey> pluginNameList, Settings? settings = null) : 
+        public MergePlugin(string mergeModName, List<ModKey> pluginNameList, HashSet<ModKey>? dontChangeFormIDs = null, Settings? settings = null) : 
             base(pluginNameList, 
                 new Dictionary<FormKey, FormKey>(), 
                 new Dictionary<FormKey, HashSet<string>>(), 
@@ -20,11 +20,14 @@ namespace MergePluginsMutagen.MergePluginClass
         {
             MergeMod = new SkyrimMod(mergeModName, SkyrimRelease.SkyrimSE);
             MergeModKeysHashSet = pluginNameList.ToHashSet();
+            DontChangeFormIDs = dontChangeFormIDs ?? new();
         }
 
         private SkyrimMod MergeMod;
 
         private HashSet<ModKey> MergeModKeysHashSet;
+
+        private HashSet<ModKey> DontChangeFormIDs;
 
         private bool ContainsMergedPluginsHoldingNavMap = false;
 
