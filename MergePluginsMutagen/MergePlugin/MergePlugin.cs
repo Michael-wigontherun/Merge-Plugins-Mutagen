@@ -106,9 +106,12 @@ namespace MergePluginsMutagen.MergePluginClass
                 }
             }
 
-            string folderPath = Path.Combine(Settings.pOutputFolder, "seq");
-            Directory.CreateDirectory(folderPath);
-            File.WriteAllBytes(Path.Combine(folderPath, Path.ChangeExtension(MergeMod.ModKey.FileName, "seq")), ids.ToArray());
+            if (ids.Any())
+            {
+                string folderPath = Path.Combine(Settings.pOutputFolder, "seq");
+                Directory.CreateDirectory(folderPath);
+                File.WriteAllBytes(Path.Combine(folderPath, Path.ChangeExtension(MergeMod.ModKey.FileName, "seq")), ids.ToArray());
+            }
         }
     }
     
