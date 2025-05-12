@@ -24,11 +24,13 @@ namespace MergePluginsMutagen
                     }
                     else if(args[1].Equals("-np"))
                     {
+                        Console.WriteLine("Setting No Pause");
                         Pause = false;
                     }
                     if (args.Length >= 3)
                     {
-                        if (args[3].Equals("-np"))
+                        Console.WriteLine("Setting No Pause");
+                        if (args[2].Equals("-np"))
                         {
                             Pause = false;
                         }
