@@ -1,8 +1,9 @@
 # MergePluginsMutagen
- Merge Plugins Using Mutagen
-
-
 Please do not use this yet its not fully finished or tested.
+
+This will only support Skyrim SE. Skyrim SE is the only game I mod into having thousands of mods and plugins.
+
+Development of Mutagen Merger has resumed somewhat and that will supersede this when its released.
 
 ## The Does and Does Not of this
 Does Not:
