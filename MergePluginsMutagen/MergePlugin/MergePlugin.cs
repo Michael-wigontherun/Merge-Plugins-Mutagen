@@ -3,6 +3,7 @@ using MergePluginsMutagen.zMergeJson;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Environments.DI;
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Analysis.DI;
 using Mutagen.Bethesda.Plugins.Masters.DI;
 using Mutagen.Bethesda.Skyrim;
 
@@ -62,10 +63,14 @@ namespace MergePluginsMutagen.MergePluginClass
         private void Save()
         {
             Console.WriteLine("Saving Merge");
+
             foreach (var rec in MergeMod.EnumerateMajorRecords())
             {
                 rec.IsCompressed = false;
             }
+
+            if (new RecordCompactionCompatibilityDetector().IsSmallMasterCompatible(MergeMod)) MergeMod.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Small;
+            
             string modOutputPath = Path.Combine(Settings.pOutputFolder, MergeMod.ModKey.FileName);
             Directory.CreateDirectory(Settings.pOutputFolder);
             MergeMod.BeginWrite
