@@ -12,6 +12,8 @@ namespace MergePluginsMutagen
             string[] array = File.ReadAllLines(pluginsTXTPath);
             for (int i = 0; i < array.Length; i++)
             {
+                if(!array[i].Contains('*')) continue;
+
                 string line = array[i].TrimStart('*');
                 try
                 {
@@ -30,7 +32,9 @@ namespace MergePluginsMutagen
             if (changed)
             {
                 Console.WriteLine("Wrote to plugins.txt");
-                File.WriteAllLines(pluginsTXTPath, array);
+                var t = File.WriteAllLinesAsync(pluginsTXTPath, array);
+                t.Wait();
+                t.Dispose();
             }
             else Console.WriteLine("No changes to plugins.txt");
         }
