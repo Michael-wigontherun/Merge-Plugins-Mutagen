@@ -101,7 +101,19 @@ namespace MergePluginsMutagen.MergePluginClass
 
         private void CreateSEQFileForMod()
         {
-            uint uintToAdd = 0x01000000 * Convert.ToUInt32(MergeMod.ModHeader.MasterReferences.Count);
+            HashSet<string> masters = new();
+            foreach (var rec in MergeMod.EnumerateMajorRecords())
+            {
+                foreach (var link in rec.EnumerateFormLinks())
+                {
+                    if (link.FormKey.ModKey.Equals(MergeMod.ModKey)) continue;
+                    masters.Add(link.FormKey.ModKey.FileName);
+                }
+                if (rec.FormKey.ModKey.Equals(MergeMod.ModKey)) continue;
+                masters.Add(rec.FormKey.ModKey.FileName);
+            }
+
+            uint uintToAdd = 0x01000000 * Convert.ToUInt32(masters.Count);
 
             List<byte> ids = new();
             foreach (var quest in MergeMod.Quests)
