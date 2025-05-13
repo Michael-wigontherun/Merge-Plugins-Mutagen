@@ -7,14 +7,14 @@ namespace MergePluginsMutagen
 {
     public class MergeMapJson
     {
-        [JsonInclude]
-        public string MergeName;
-        [JsonInclude]
-        public List<MapKeyJson> MapKeysJson;
-        [JsonInclude]
-        public List<ModKey> MergeModKeys;
-        [JsonInclude]
+        [JsonInclude, JsonPropertyOrder(0)]
         public bool ContainsMergedPluginsHoldingNavMap;
+        [JsonInclude, JsonPropertyOrder(1)]
+        public string MergeName;
+        [JsonInclude, JsonPropertyOrder(2)]
+        public List<MapKeyJson> MapKeysJson;
+        [JsonInclude, JsonPropertyOrder(3)]
+        public List<ModKey> MergeModKeys;
 
         public MergeMapJson()
         {
