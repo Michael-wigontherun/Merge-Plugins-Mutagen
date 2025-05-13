@@ -102,6 +102,8 @@ namespace MergePluginsMutagen.MergeData
             return null;
         }
 
+        public Settings ReturnSettings() => this.Settings;
+
         public class FileComparableData
         {
             public FileComparableData(string orgFileName, string orgTrimmedID, string newFileName, string trimmedID)

@@ -52,6 +52,7 @@ namespace MergePluginsMutagen.MergePluginClass
             return (IMergeInformation)this;
         }
 
+
         private HashSet<ModKey> BuildOnlyLoadTheseList()
         {
             //OnlyLoadThese = MergeModKeys.ToHashSet();
@@ -85,18 +86,39 @@ namespace MergePluginsMutagen.MergePluginClass
 
             string baseJsonOutputPath = Path.Combine(Settings.pOutputFolder, "merge - " + Path.GetFileNameWithoutExtension(MergeMod.ModKey.FileName));
 
-            var mapJSON = new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys, 
-                containsMergedPluginsHoldingNavMap: ContainsMergedPluginsHoldingNavMap);
-            mapJSON.Output(Path.Combine(baseJsonOutputPath, MergeMod.ModKey.FileName + ".json"));
+            string mergeMapJsonPath = Path.Combine(baseJsonOutputPath, MergeMod.ModKey.FileName + ".json");
+            string mergeJsonPath = Path.Combine(baseJsonOutputPath, "merge.json");
+            string mapJSONPath = Path.Combine(baseJsonOutputPath, "map.json");
+            string fidCachePath = Path.Combine(baseJsonOutputPath, "fidCache.json");
+
+            new MergeMapJson(MergeMap, MergeMod.ModKey.FileName, MergeModKeys, 
+                containsMergedPluginsHoldingNavMap: ContainsMergedPluginsHoldingNavMap)
+                .Output(mergeMapJsonPath);
 
             new mergeJson(MergeMod.ModKey.FileName, LoadOrder, File.GetLastWriteTime(modOutputPath).ToLongTimeString(), MergeModKeys)
-                .Output(Path.Combine(baseJsonOutputPath, "merge.json"));
+                .Output(mergeJsonPath);
 
             new MapJSON(MergeMap, MergeModKeys)
-                .Outout(Path.Combine(baseJsonOutputPath, "map.json"));
+                .Outout(mapJSONPath);
 
             new fidCache(MergeMap, MergeModKeys)
-                .Output(Path.Combine(baseJsonOutputPath, "fidCache.json"));
+                .Output(fidCachePath);
+
+            if (Settings.oAsVSCWorkspace)
+            {
+                if (Settings.oMergeFolder) Settings.AddOpenDirectory(Settings.pOutputFolder);
+                else Settings.AddOpenDirectory(baseJsonOutputPath);
+            }
+            else
+            {
+                if(Settings.oMergeJson) Settings.AddOpenFile(mergeMapJsonPath);
+                if (Settings.oZMergejson)
+                {
+                    Settings.AddOpenFile(mergeJsonPath);
+                    Settings.AddOpenFile(mapJSONPath);
+                    Settings.AddOpenFile(fidCachePath);
+                }
+            }
         }
 
         private void CreateSEQFileForMod()

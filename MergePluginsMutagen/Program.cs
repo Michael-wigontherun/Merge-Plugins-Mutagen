@@ -2,7 +2,6 @@
 using MergePluginsMutagen.MergePluginClass;
 using MergePluginsMutagen.MergeData;
 using Mutagen.Bethesda.Skyrim;
-using DynamicData;
 
 namespace MergePluginsMutagen
 {
@@ -66,12 +65,15 @@ namespace MergePluginsMutagen
                 var MergeInformation = new MergePlugin(mergeModName, pluginNameList, dontChangeFormIDs: dontChangeFormIDs, settings: Settings)
                     .Build();
 
-                new MergeDataFiles(MergeInformation)
+                Settings = new MergeDataFiles(MergeInformation)
                     .ExtractData()
                     .HandleVoiceFiles()
-                    .HandleFaceGenFiles();
+                    .HandleFaceGenFiles()
+                    .ReturnSettings();
 
                 EditPluginsTXT.ChangePluginsTXT(pluginNameList.ToHashSet(), Settings.pPluginstxt, dontChangeFormIDs);
+
+                Settings.OpenDefaultTXTProgram();
             }
             catch(Exception ex)
             {
@@ -110,11 +112,12 @@ namespace MergePluginsMutagen
                     Console.WriteLine($"{pluginName} does not exists in data folder.");
                     continue;
                 }
+
                 try
                 {
                     pluginNameList.Add(ModKey.FromFileName(pluginName));
                 }
-                catch (ArgumentException) { Console.WriteLine("Not a plugin"); }
+                catch (ArgumentException) { Console.WriteLine(pluginName + " is not a plugin"); }
             }
 
             return InvalidateModsForMerge(pluginNameList, out dontChangeFormIDs);
