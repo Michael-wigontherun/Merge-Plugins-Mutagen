@@ -40,7 +40,7 @@ namespace MergePluginsMutagen.MergePluginClass
             foreach (var key in MergeModKeys)
             {
                 //SkyrimMod mod = SkyrimMod.CreateFromBinary(Path.Combine(Settings.pDataFolder, key.FileName), SkyrimRelease.SkyrimSE);
-                Console.WriteLine("Duplicating records from " + key.FileName);
+                Console.WriteLine("Duplicating records from:\t" + key.FileName);
                 AddUniformKeys(SkyrimMod.CreateFromBinary(Path.Combine(Settings.pDataFolder, key.FileName), SkyrimRelease.SkyrimSE));
             }
 
