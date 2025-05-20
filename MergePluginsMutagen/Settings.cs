@@ -37,6 +37,7 @@ namespace MergePluginsMutagen
 
             IConfigurationSection Processing = config.GetSection("Processing");
             iMoveFiles = bool.Parse(Processing["iMoveFiles"]!);
+            iTranslations = Processing["iTranslations"]!.Split(',', StringSplitOptions.TrimEntries);
 
             IConfigurationSection OpenFiles = config.GetSection("OpenFiles");
             oDefaultTxtProgram = RemoveExtraSlash(OpenFiles["oDefaultTxtProgram"]!);
@@ -68,6 +69,10 @@ namespace MergePluginsMutagen
 
         //[Processing]
         public bool iMoveFiles = false;
+        public string[] iTranslations = new string[]
+        {
+            "english"
+        };
 
         //[OpenFiles]
         public string oDefaultTxtProgram = "";

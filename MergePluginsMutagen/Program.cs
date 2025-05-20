@@ -69,6 +69,7 @@ namespace MergePluginsMutagen
                     .ExtractData()
                     .HandleVoiceFiles()
                     .HandleFaceGenFiles()
+                    .HandleTranslationFiles(Path.GetFileNameWithoutExtension(mergeModName))
                     .ReturnSettings();
 
                 EditPluginsTXT.ChangePluginsTXT(pluginNameList.ToHashSet(), Settings.pPluginstxt, dontChangeFormIDs);
